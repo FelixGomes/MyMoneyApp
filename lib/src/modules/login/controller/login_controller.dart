@@ -3,11 +3,14 @@ import 'package:mobx/mobx.dart';
 
 import '../../../shared/components/app_snackbar.dart';
 import '../../../shared/helpers/validator.dart';
+import '../service/login_service.dart';
 part 'login_controller.g.dart';
 
 class LoginController = _LoginController with _$LoginController;
 
 abstract class _LoginController with Store {
+  LoginService service = LoginService();
+
   @observable
   bool isLoading = false;
 
@@ -52,6 +55,39 @@ abstract class _LoginController with Store {
 
   @action
   Future<void> sendData() async {
-    isSuccess = true;
+    Map result = await service.sendData(username: email, password: password);
+
+    result.containsKey('success')
+        ? isSuccess = true
+        : getException(result['exception']);
+  }
+
+  @action
+  void getException(int code) {
+    switch (code) {
+      case 400:
+        AppSnackbar.openMessage(
+          context: buildContext,
+          message: "Dados inválidos",
+        );
+        break;
+      case 401:
+        AppSnackbar.openMessage(
+          context: buildContext,
+          message: "Acesso não autorizado",
+        );
+        break;
+      case 500:
+        AppSnackbar.openMessage(
+          context: buildContext,
+          message: "Internal server error",
+        );
+        break;
+      default:
+        AppSnackbar.openMessage(
+          context: buildContext,
+          message: "Erro inesperado, tente mais tarde",
+        );
+    }
   }
 }
