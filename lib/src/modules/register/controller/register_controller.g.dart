@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_controller.dart';
+part of 'register_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'login_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$LoginController on _LoginController, Store {
+mixin _$RegisterController on _RegisterController, Store {
   late final _$isLoadingAtom =
-      Atom(name: '_LoginController.isLoading', context: context);
+      Atom(name: '_RegisterController.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -26,7 +26,7 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$isSuccessAtom =
-      Atom(name: '_LoginController.isSuccess', context: context);
+      Atom(name: '_RegisterController.isSuccess', context: context);
 
   @override
   bool get isSuccess {
@@ -42,39 +42,37 @@ mixin _$LoginController on _LoginController, Store {
   }
 
   late final _$checkDataAsyncAction =
-      AsyncAction('_LoginController.checkData', context: context);
+      AsyncAction('_RegisterController.checkData', context: context);
 
   @override
   Future<void> checkData(
-      {required String emailController,
+      {required String nameController,
+      required String emailController,
       required String passwordController,
+      required String passwordCheckController,
       required BuildContext buildContext}) {
     return _$checkDataAsyncAction.run(() => super.checkData(
+        nameController: nameController,
         emailController: emailController,
         passwordController: passwordController,
+        passwordCheckController: passwordCheckController,
         buildContext: buildContext));
   }
 
+  late final _$validateAsyncAction =
+      AsyncAction('_RegisterController.validate', context: context);
+
+  @override
+  Future<void> validate() {
+    return _$validateAsyncAction.run(() => super.validate());
+  }
+
   late final _$sendDataAsyncAction =
-      AsyncAction('_LoginController.sendData', context: context);
+      AsyncAction('_RegisterController.sendData', context: context);
 
   @override
   Future<void> sendData() {
     return _$sendDataAsyncAction.run(() => super.sendData());
-  }
-
-  late final _$_LoginControllerActionController =
-      ActionController(name: '_LoginController', context: context);
-
-  @override
-  void getException(int code) {
-    final _$actionInfo = _$_LoginControllerActionController.startAction(
-        name: '_LoginController.getException');
-    try {
-      return super.getException(code);
-    } finally {
-      _$_LoginControllerActionController.endAction(_$actionInfo);
-    }
   }
 
   @override

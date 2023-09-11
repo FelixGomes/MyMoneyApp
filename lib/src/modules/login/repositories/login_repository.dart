@@ -5,7 +5,7 @@ import '../model/login_model.dart';
 
 class LoginRepository {
   // your local adress where backend is running, change if necessary
-  String baseUrl = "";
+  String baseUrl = "http://192.168.15.113:5432/auth/login";
 
   Future<Response<Map<String, dynamic>>> sendData(LoginModel loginData) async {
     Dio clientHttp = await AppDio.getConnection(isAuth: false);
