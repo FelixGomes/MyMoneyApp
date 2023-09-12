@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:my_money_app/src/modules/personal_register/model/personal_register_model.dart';
-import 'package:my_money_app/src/shared/model/lib/src/shared/model/user_update_model.dart';
+import 'package:my_money_app/src/shared/model/user_update_model.dart';
 import '../../../http/app_dio.dart';
 
 class PersonalRegisterRepository {

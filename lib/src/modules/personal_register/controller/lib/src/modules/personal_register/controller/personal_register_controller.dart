@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:my_money_app/src/shared/components/app_snackbar.dart';
 import 'package:my_money_app/src/shared/helpers/authenticated_user.dart';
-import 'package:my_money_app/src/shared/model/lib/src/shared/model/user_model.dart';
+import 'package:my_money_app/src/shared/model/user_model.dart';
 import '../../../../../../service/personal_register_service.dart';
 part 'personal_register_controller.g.dart';
 

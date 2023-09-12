@@ -1,11 +1,22 @@
-import 'package:my_money_app/src/shared/model/lib/src/shared/model/user_model.dart';
+import 'dart:convert';
+import 'package:my_money_app/src/shared/model/user_model.dart';
+import 'package:my_money_app/src/shared/storage/app_keys.dart';
+import 'package:my_money_app/src/shared/storage/app_secure_storage.dart';
 
 class AuthenticatedUser {
   static Future<UserModel> getUserData() async {
-    UserModel userData = UserModel(
-        fullName: "Gustavo Gomes",
-        email: "gustavogomes@gmail.com",
-        id: "ab73f8e9-1f74-40ad-808c-4d18317047b5");
+    Map<String, dynamic> userJson = {};
+
+    String? user = await AppSecureStorage.readItem(AppKeys.user);
+
+    if (user != null) userJson.addAll(jsonDecode(user));
+
+    String goalValue =
+        await AppSecureStorage.readItem(AppKeys.goal_value) ?? "0";
+
+    userJson["limitValue"] = goalValue;
+
+    UserModel userData = UserModel.fromJson(userJson);
 
     return userData;
   }
