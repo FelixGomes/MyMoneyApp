@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:my_money_app/src/modules/login/components/register_link.dart';
 import 'package:my_money_app/src/modules/login/controller/login_controller.dart';
 import 'package:my_money_app/src/shared/colors/app_colors.dart';
+import 'package:my_money_app/src/router/app_router.dart';
 import 'package:my_money_app/src/shared/components/app_button.dart';
 import 'package:my_money_app/src/shared/components/app_loading.dart';
 import 'package:my_money_app/src/shared/components/app_logo_title.dart';
@@ -89,7 +90,11 @@ class _LoginPageState extends State<LoginPage> {
                                     },
                                     label: "Login")),
                             GestureDetector(
-                                onTap: () {}, child: const RegisterLink()),
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, AppRouter.register);
+                                },
+                                child: const RegisterLink()),
                           ]),
                     ),
                   )),
